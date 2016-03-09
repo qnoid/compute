@@ -9,11 +9,9 @@
 import UIKit
 
 struct Compute {
-    
-    var function: () -> Void {
-        didSet{
-            function()
-        }
+
+    init(function: () -> Void) {
+        function()
     }
 }
 
@@ -35,11 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let cache = Cache()
             
-            let compute = Compute {
+            Compute {
                 cache.heavilyComputational
             }
-            
-            compute.function()
             
             dispatch_async(dispatch_get_main_queue()){
                 debugPrint(cache.heavilyComputational)
