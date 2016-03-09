@@ -8,6 +8,15 @@
 
 import UIKit
 
+struct Compute {
+    
+    var function: () -> Void {
+        didSet{
+            function()
+        }
+    }
+}
+
 class Cache {
     
     lazy var heavilyComputational = {
@@ -26,7 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let cache = Cache()
             
-            let _ = cache.heavilyComputational
+            Compute {
+                cache.heavilyComputational
+            }
             
             dispatch_async(dispatch_get_main_queue()){
                 debugPrint(cache.heavilyComputational)
