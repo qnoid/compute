@@ -35,9 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let cache = Cache()
             
-            Compute {
+            let compute = Compute {
                 cache.heavilyComputational
             }
+            
+            compute.function()
             
             dispatch_async(dispatch_get_main_queue()){
                 debugPrint(cache.heavilyComputational)
